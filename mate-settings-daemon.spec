@@ -9,9 +9,9 @@ Version:	1.5.4
 Release:	0.2
 License:	GPL v2+
 Group:		X11/Applications
-URL:		http://mate-desktop.org/
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	d60acd136d4d7b273dc5cb6033beba98
+URL:		http://mate-desktop.org/
 BuildRequires:	icon-naming-utils
 BuildRequires:	mate-common
 #BuildRequires:	pkgconfig(clutter-gst-1.0)
@@ -27,6 +27,8 @@ BuildRequires:	pkgconfig(polkit-agent-1)
 BuildRequires:	pkgconfig(polkit-gtk-mate-1)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	rpmbuild(macros) >= 1.596
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	glib2 >= 1:2.26.0
 Requires:	gsettings-desktop-schemas
 Requires:	gtk-update-icon-cache

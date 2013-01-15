@@ -6,7 +6,7 @@
 Summary:	MATE Desktop settings daemon
 Name:		mate-settings-daemon
 Version:	1.5.4
-Release:	0.2
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
@@ -108,14 +108,10 @@ fi
 %attr(755,root,root) %{_libexecdir}/msd-locate-pointer
 %{_datadir}/dbus-1/services/org.mate.SettingsDaemon.service
 %{_datadir}/dbus-1/system-services/org.mate.SettingsDaemon.DateTimeMechanism.service
-%{_iconsdir}/mate/*/*/*
+%{_iconsdir}/mate/*/*/*.*
 %{_datadir}/mate-settings-daemon
 %{_datadir}/glib-2.0/schemas/org.mate.*.xml
 %{_datadir}/polkit-1/actions/org.mate.settingsdaemon.datetimemechanism.policy
-
-# XXX proper package for these dirs
-%dir %{_iconsdir}/mate/scalable/actions
-%dir %{_iconsdir}/mate/scalable/apps
 
 %files devel
 %defattr(644,root,root,755)

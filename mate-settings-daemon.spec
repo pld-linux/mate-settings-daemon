@@ -11,23 +11,26 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	d60acd136d4d7b273dc5cb6033beba98
-URL:		http://mate-desktop.org/
+URL:		http://wiki.mate-desktop.org/mate-settings-daemon
+BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	glib2-devel >= 1:2.17.3
+BuildRequires:	gsettings-desktop-schemas-devel
+BuildRequires:	gtk+2-devel >= 2:2.21.2
 BuildRequires:	icon-naming-utils
+BuildRequires:	intltool >= 0.37.1
+BuildRequires:	libmatekbd-devel
+BuildRequires:	libmatenotify-devel
+BuildRequires:	libxklavier-devel
 BuildRequires:	mate-common
+BuildRequires:	mate-desktop-devel
+BuildRequires:	mate-polkit-devel
+BuildRequires:	nss-devel
 #BuildRequires:	pkgconfig(clutter-gst-1.0)
-BuildRequires:	pkgconfig(dbus-glib-1)
-BuildRequires:	pkgconfig(gsettings-desktop-schemas)
-BuildRequires:	pkgconfig(gtk+-2.0)
-BuildRequires:	pkgconfig(libmatekbd)
-BuildRequires:	pkgconfig(libmatenotify)
-BuildRequires:	pkgconfig(libxklavier)
-BuildRequires:	pkgconfig(mate-desktop-2.0)
-BuildRequires:	pkgconfig(nss)
-BuildRequires:	pkgconfig(polkit-agent-1)
-BuildRequires:	pkgconfig(polkit-gtk-mate-1)
-BuildRequires:	pkgconfig(sm)
+#BuildRequires:	pkgconfig(mate-conf)
+BuildRequires:	polkit-devel
 BuildRequires:	rpmbuild(macros) >= 1.596
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.26.0
 Requires:	gsettings-desktop-schemas
@@ -74,8 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install -j1 \
 	DESTDIR=$RPM_BUILD_ROOT
 
-find $RPM_BUILD_ROOT -type f -name "*.la" |xargs rm
-find $RPM_BUILD_ROOT -type f -name "*.a" | xargs rm
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
 
 %find_lang %{name}
 
@@ -117,5 +119,5 @@ fi
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/mate-settings-daemon/
+%{_includedir}/mate-settings-daemon
 %{_pkgconfigdir}/mate-settings-daemon.pc

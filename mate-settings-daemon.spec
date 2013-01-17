@@ -13,17 +13,15 @@ Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	d60acd136d4d7b273dc5cb6033beba98
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.17.3
-BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+2-devel >= 2:2.21.2
-BuildRequires:	icon-naming-utils
 BuildRequires:	intltool >= 0.37.1
 BuildRequires:	libmatekbd-devel
 BuildRequires:	libmatenotify-devel
 BuildRequires:	libxklavier-devel
 BuildRequires:	mate-common
 BuildRequires:	mate-desktop-devel
-BuildRequires:	mate-polkit-devel
 BuildRequires:	nss-devel
 #BuildRequires:	pkgconfig(clutter-gst-1.0)
 #BuildRequires:	pkgconfig(mate-conf)

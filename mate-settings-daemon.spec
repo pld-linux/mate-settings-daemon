@@ -5,27 +5,28 @@
 
 Summary:	MATE Desktop settings daemon
 Name:		mate-settings-daemon
-Version:	1.5.4
+Version:	1.5.5
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	d60acd136d4d7b273dc5cb6033beba98
+# Source0-md5:	d0c02b1a8cee205bccf1bd237d21d82a
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.17.3
-BuildRequires:	gtk+2-devel >= 2:2.21.2
+BuildRequires:	gtk+2-devel >= 2:2.24.0
 BuildRequires:	intltool >= 0.37.1
 BuildRequires:	libmatekbd-devel
 BuildRequires:	libmatenotify-devel
 BuildRequires:	libxklavier-devel
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel
+BuildRequires:	mate-desktop-devel >= 1.5.0
 BuildRequires:	nss-devel
 #BuildRequires:	pkgconfig(clutter-gst-1.0)
 #BuildRequires:	pkgconfig(mate-conf)
-BuildRequires:	polkit-devel
+BuildRequires:	polkit-devel >= 0.97
+BuildRequires:	pulseaudio-devel >= 0.9.16
 BuildRequires:	rpmbuild(macros) >= 1.596
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libSM-devel
@@ -58,6 +59,7 @@ Development files for mate-settings-daemon
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
+	--disable-silent-rules \
 	--disable-static \
 	--with-x  \
 	--enable-gstreamer  \
@@ -67,13 +69,15 @@ NOCONFIGURE=1 ./autogen.sh
 	--with-x  \
 	--with-nssdb  \
 
-%{__make} \
-	V=1
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install -j1 \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# mate < 1.5 did not exist in pld, avoid dependency on mate-conf
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-settings-daemon.convert
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
 

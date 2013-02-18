@@ -1,16 +1,16 @@
 # TODO
 # - do implicit list of deps?
 #mate-settings-daemon-1.5.4-0.2.i686 marks libmatekbd-1.5.0-0.1.i686 (cap libmatekbd.so.4)
-#mate-settings-daemon-1.5.4-0.2.i686 marks libmatenotify-1.5.0-0.1.i686 (cap libmatenotify.so.1)
 
 Summary:	MATE Desktop settings daemon
 Name:		mate-settings-daemon
 Version:	1.5.5
-Release:	1
+Release:	1.1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	d0c02b1a8cee205bccf1bd237d21d82a
+Patch0:		use-libnotify.patch
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	gettext-devel
@@ -18,7 +18,7 @@ BuildRequires:	glib2-devel >= 1:2.17.3
 BuildRequires:	gtk+2-devel >= 2:2.24.0
 BuildRequires:	intltool >= 0.37.1
 BuildRequires:	libmatekbd-devel
-BuildRequires:	libmatenotify-devel
+BuildRequires:	libnotify-devel
 BuildRequires:	libxklavier-devel
 BuildRequires:	mate-common
 BuildRequires:	mate-desktop-devel >= 1.5.0
@@ -55,6 +55,7 @@ Development files for mate-settings-daemon
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh

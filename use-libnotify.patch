@@ -18,8 +18,8 @@
  	$(MATE_DESKTOP_LIBS)
  
  plugin_in_files =			\
---- mate-settings-daemon-1.5.5/./plugins/xrandr/msd-xrandr-manager.c~	2013-02-08 01:25:01.000000000 +0200
-+++ mate-settings-daemon-1.5.5/./plugins/xrandr/msd-xrandr-manager.c	2013-02-18 22:10:12.263775052 +0200
+--- mate-settings-daemon-1.5.5/plugins/xrandr/msd-xrandr-manager.c	2013-02-18 22:10:12.263775052 +0200
++++ mate-settings-daemon-1.5.5/plugins/xrandr/msd-xrandr-manager.c	2013-02-18 22:25:36.719541100 +0200
 @@ -46,8 +46,8 @@
  #include <libmateui/mate-rr.h>
  #include <libmateui/mate-rr-labeler.h>
@@ -40,7 +40,17 @@
          MsdXrandrManagerPrivate *priv = mgr->priv;
          NotifyNotification *notification;
  
-@@ -1107,7 +1107,7 @@
+@@ -1093,8 +1093,7 @@
+         else
+                 notification = notify_notification_new (primary_text,
+                                                         error_to_display ? error_to_display->message : secondary_text,
+-                                                        MSD_XRANDR_ICON_NAME,
+-                                                        NULL);
++                                                        MSD_XRANDR_ICON_NAME);
+ 
+         notify_notification_show (notification, NULL); /* NULL-GError */
+ #else
+@@ -1107,7 +1106,7 @@
  
          gtk_dialog_run (GTK_DIALOG (dialog));
          gtk_widget_destroy (dialog);
@@ -69,8 +79,8 @@
  	$(NULL)
  
  plugin_in_files = 		\
---- mate-settings-daemon-1.5.5/./plugins/a11y-keyboard/msd-a11y-keyboard-manager.c~	2013-02-08 01:25:01.000000000 +0200
-+++ mate-settings-daemon-1.5.5/./plugins/a11y-keyboard/msd-a11y-keyboard-manager.c	2013-02-18 22:10:59.255932639 +0200
+--- mate-settings-daemon-1.5.5/plugins/a11y-keyboard/msd-a11y-keyboard-manager.c	2013-02-18 22:10:59.255932639 +0200
++++ mate-settings-daemon-1.5.5/plugins/a11y-keyboard/msd-a11y-keyboard-manager.c	2013-02-18 22:20:31.682202641 +0200
 @@ -46,9 +46,9 @@
  #include <X11/extensions/XIproto.h>
  #endif
@@ -121,7 +131,17 @@
          gboolean    res;
          const char *title;
          const char *message;
-@@ -625,7 +625,7 @@
+@@ -591,8 +591,7 @@
+         msd_a11y_keyboard_manager_ensure_status_icon (manager);
+         manager->priv->notification = notify_notification_new (title,
+                                                                message,
+-                                                               "preferences-desktop-accessibility",
+-                                                               NULL);
++                                                               "preferences-desktop-accessibility");
+         notify_notification_attach_to_status_icon (manager->priv->notification, manager->priv->status_icon);
+         notify_notification_set_timeout (manager->priv->notification, NOTIFICATION_TIMEOUT * 1000);
+ 
+@@ -625,7 +624,7 @@
          return res;
  #else
          return FALSE;
@@ -130,7 +150,7 @@
  }
  
  
-@@ -700,7 +700,7 @@
+@@ -700,7 +699,7 @@
  ax_stickykeys_warning_post_bubble (MsdA11yKeyboardManager *manager,
                                     gboolean                enabled)
  {
@@ -139,7 +159,17 @@
          gboolean    res;
          const char *title;
          const char *message;
-@@ -764,7 +764,7 @@
+@@ -730,8 +729,7 @@
+         msd_a11y_keyboard_manager_ensure_status_icon (manager);
+         manager->priv->notification = notify_notification_new (title,
+                                                                message,
+-                                                               "preferences-desktop-accessibility",
+-                                                               NULL);
++                                                               "preferences-desktop-accessibility");
+         notify_notification_attach_to_status_icon (manager->priv->notification, manager->priv->status_icon);
+         notify_notification_set_timeout (manager->priv->notification, NOTIFICATION_TIMEOUT * 1000);
+ 
+@@ -764,7 +762,7 @@
          return res;
  #else
          return FALSE;
@@ -148,7 +178,7 @@
  }
  
  static void
-@@ -1250,9 +1250,9 @@
+@@ -1250,9 +1248,9 @@
  {
          manager->priv = MSD_A11Y_KEYBOARD_MANAGER_GET_PRIVATE (manager);
  

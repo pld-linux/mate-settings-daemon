@@ -18,8 +18,8 @@
  	$(MATE_DESKTOP_LIBS)
  
  plugin_in_files =			\
---- mate-settings-daemon-1.5.5/plugins/xrandr/msd-xrandr-manager.c	2013-02-18 22:10:12.263775052 +0200
-+++ mate-settings-daemon-1.5.5/plugins/xrandr/msd-xrandr-manager.c	2013-02-18 22:25:36.719541100 +0200
+--- mate-settings-daemon-1.5.5/plugins/xrandr/msd-xrandr-manager.c	2013-02-18 22:25:36.719541100 +0200
++++ mate-settings-daemon-1.5.5/plugins/xrandr/msd-xrandr-manager.c	2013-02-26 00:46:56.115307180 +0200
 @@ -46,8 +46,8 @@
  #include <libmateui/mate-rr.h>
  #include <libmateui/mate-rr-labeler.h>
@@ -31,7 +31,7 @@
  #endif
  
  #include "mate-settings-profile.h"
-@@ -1079,7 +1079,7 @@
+@@ -1079,22 +1079,20 @@
  static void
  error_message (MsdXrandrManager *mgr, const char *primary_text, GError *error_to_display, const char *secondary_text)
  {
@@ -40,7 +40,16 @@
          MsdXrandrManagerPrivate *priv = mgr->priv;
          NotifyNotification *notification;
  
-@@ -1093,8 +1093,7 @@
+         g_assert (error_to_display == NULL || secondary_text == NULL);
+ 
+         if (priv->status_icon)
+-                notification = notify_notification_new_with_status_icon (primary_text,
+-                                                                         error_to_display ? error_to_display->message : secondary_text,
+-                                                                         MSD_XRANDR_ICON_NAME,
+-                                                                         priv->status_icon);
++                notification = notify_notification_new (primary_text,
++                                                        error_to_display ? error_to_display->message : secondary_text,
++                                                        gtk_status_icon_get_icon_name(priv->status_icon));
          else
                  notification = notify_notification_new (primary_text,
                                                          error_to_display ? error_to_display->message : secondary_text,
@@ -50,7 +59,7 @@
  
          notify_notification_show (notification, NULL); /* NULL-GError */
  #else
-@@ -1107,7 +1106,7 @@
+@@ -1107,7 +1105,7 @@
  
          gtk_dialog_run (GTK_DIALOG (dialog));
          gtk_widget_destroy (dialog);

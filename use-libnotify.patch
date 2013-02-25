@@ -88,8 +88,8 @@
  	$(NULL)
  
  plugin_in_files = 		\
---- mate-settings-daemon-1.5.5/plugins/a11y-keyboard/msd-a11y-keyboard-manager.c	2013-02-18 22:10:59.255932639 +0200
-+++ mate-settings-daemon-1.5.5/plugins/a11y-keyboard/msd-a11y-keyboard-manager.c	2013-02-18 22:20:31.682202641 +0200
+--- mate-settings-daemon-1.5.5/plugins/a11y-keyboard/msd-a11y-keyboard-manager.c	2013-02-18 22:20:31.682202641 +0200
++++ mate-settings-daemon-1.5.5/plugins/a11y-keyboard/msd-a11y-keyboard-manager.c	2013-02-26 01:10:16.830084486 +0200
 @@ -46,9 +46,9 @@
  #include <X11/extensions/XIproto.h>
  #endif
@@ -140,17 +140,18 @@
          gboolean    res;
          const char *title;
          const char *message;
-@@ -591,8 +591,7 @@
+@@ -591,9 +591,7 @@
          msd_a11y_keyboard_manager_ensure_status_icon (manager);
          manager->priv->notification = notify_notification_new (title,
                                                                 message,
 -                                                               "preferences-desktop-accessibility",
 -                                                               NULL);
+-        notify_notification_attach_to_status_icon (manager->priv->notification, manager->priv->status_icon);
 +                                                               "preferences-desktop-accessibility");
-         notify_notification_attach_to_status_icon (manager->priv->notification, manager->priv->status_icon);
          notify_notification_set_timeout (manager->priv->notification, NOTIFICATION_TIMEOUT * 1000);
  
-@@ -625,7 +624,7 @@
+         notify_notification_add_action (manager->priv->notification,
+@@ -625,7 +623,7 @@
          return res;
  #else
          return FALSE;
@@ -159,7 +160,7 @@
  }
  
  
-@@ -700,7 +699,7 @@
+@@ -700,7 +698,7 @@
  ax_stickykeys_warning_post_bubble (MsdA11yKeyboardManager *manager,
                                     gboolean                enabled)
  {
@@ -168,17 +169,18 @@
          gboolean    res;
          const char *title;
          const char *message;
-@@ -730,8 +729,7 @@
+@@ -730,9 +728,7 @@
          msd_a11y_keyboard_manager_ensure_status_icon (manager);
          manager->priv->notification = notify_notification_new (title,
                                                                 message,
 -                                                               "preferences-desktop-accessibility",
 -                                                               NULL);
+-        notify_notification_attach_to_status_icon (manager->priv->notification, manager->priv->status_icon);
 +                                                               "preferences-desktop-accessibility");
-         notify_notification_attach_to_status_icon (manager->priv->notification, manager->priv->status_icon);
          notify_notification_set_timeout (manager->priv->notification, NOTIFICATION_TIMEOUT * 1000);
  
-@@ -764,7 +762,7 @@
+         notify_notification_add_action (manager->priv->notification,
+@@ -764,7 +760,7 @@
          return res;
  #else
          return FALSE;
@@ -187,7 +189,7 @@
  }
  
  static void
-@@ -1250,9 +1248,9 @@
+@@ -1250,9 +1246,9 @@
  {
          manager->priv = MSD_A11Y_KEYBOARD_MANAGER_GET_PRIVATE (manager);
  

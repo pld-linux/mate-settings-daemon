@@ -5,7 +5,7 @@
 Summary:	MATE Desktop settings daemon
 Name:		mate-settings-daemon
 Version:	1.5.5
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz

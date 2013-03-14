@@ -4,15 +4,15 @@
 
 Summary:	MATE Desktop settings daemon
 Name:		mate-settings-daemon
-Version:	1.5.5
-Release:	3
+Version:	1.5.6
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	d0c02b1a8cee205bccf1bd237d21d82a
-Patch0:		use-libnotify.patch
+# Source0-md5:	fe275138bc57882c3dffd4f87046bf12
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	dconf-devel >= 0.13
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.17.3
 BuildRequires:	gtk+2-devel >= 2:2.24.0
@@ -55,7 +55,6 @@ Development files for mate-settings-daemon
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh

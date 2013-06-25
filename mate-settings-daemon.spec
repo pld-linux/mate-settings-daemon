@@ -4,12 +4,12 @@
 
 Summary:	MATE Desktop settings daemon
 Name:		mate-settings-daemon
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	9d6e0fd364b8d16a97c517da0c7bf71b
+# Source0-md5:	a6a15afbb1ae264c9bf94c305316d53d
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	dconf-devel >= 0.13
@@ -17,9 +17,9 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.17.3
 BuildRequires:	gtk+2-devel >= 2:2.24.0
 BuildRequires:	intltool >= 0.37.1
-BuildRequires:	libmatekbd-devel
+BuildRequires:	libmatekbd-devel >= 1.6.1
 BuildRequires:	libnotify-devel
-BuildRequires:	libxklavier-devel
+BuildRequires:	libxklavier-devel >= 5.0
 BuildRequires:	mate-common
 BuildRequires:	mate-desktop-devel >= 1.5.0
 BuildRequires:	nss-devel
@@ -39,8 +39,7 @@ Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # makefiles and this spec gets confused if %{_libdir} == %{_libexecdir}
-# so we setup separate --libexecdir=%{_libdir}/msd
-%define		_libexecdir %{_libdir}/msd
+%define		_libexecdir %{_libdir}/%{name}
 
 %description
 MATE Desktop settings daemon
@@ -57,7 +56,6 @@ Development files for mate-settings-daemon
 %setup -q
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-silent-rules \
 	--disable-static \
@@ -103,17 +101,19 @@ fi
 %doc AUTHORS COPYING README
 /etc/dbus-1/system.d/org.mate.SettingsDaemon.DateTimeMechanism.conf
 %{_sysconfdir}/xdg/autostart/mate-settings-daemon.desktop
-%attr(755,root,root) %{_libdir}/mate-settings-daemon
-%dir %{_libexecdir}
-%attr(755,root,root) %{_libexecdir}/mate-settings-daemon
-%attr(755,root,root) %{_libexecdir}/msd-datetime-mechanism
-%attr(755,root,root) %{_libexecdir}/msd-locate-pointer
 %{_datadir}/dbus-1/services/org.mate.SettingsDaemon.service
 %{_datadir}/dbus-1/system-services/org.mate.SettingsDaemon.DateTimeMechanism.service
 %{_iconsdir}/mate/*/*/*.*
 %{_datadir}/mate-settings-daemon
 %{_datadir}/glib-2.0/schemas/org.mate.*.xml
 %{_datadir}/polkit-1/actions/org.mate.settingsdaemon.datetimemechanism.policy
+
+%dir %{_libexecdir}
+%attr(755,root,root) %{_libexecdir}/mate-settings-daemon
+%attr(755,root,root) %{_libexecdir}/msd-datetime-mechanism
+%attr(755,root,root) %{_libexecdir}/msd-locate-pointer
+%attr(755,root,root) %{_libexecdir}/*.so
+%{_libexecdir}/*-plugin
 
 %files devel
 %defattr(644,root,root,755)

@@ -1,13 +1,15 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.6.2
-Release:	2
+Version:	1.8.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	551b2c2204b67ee2ffc9d49051d35efb
+Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
+# Source0-md5:	5a37759334596d97f9157c364a887d29
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
+BuildRequires:	autoconf >= 2.60
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	dconf-devel >= 0.13.4
@@ -19,11 +21,12 @@ BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10.1.2
 BuildRequires:	gtk+2-devel >= 2:2.24.0
 BuildRequires:	intltool >= 0.37.1
 BuildRequires:	libcanberra-gtk-devel
-BuildRequires:	libmatekbd-devel >= 1.6.1
+BuildRequires:	libmatekbd-devel >= 1.7.0
 BuildRequires:	libnotify-devel >= 0.7.0
+BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 5.0
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.5.0
+BuildRequires:	mate-desktop-devel >= 1.7.3
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -43,10 +46,10 @@ Requires:	glib2 >= 1:2.26.0
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+2 >= 2:2.24.0
 Requires:	gtk-update-icon-cache
-Requires:	libmatekbd >= 1.6.1
+Requires:	libmatekbd >= 1.7.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.0
-Requires:	mate-desktop >= 1.5.0
+Requires:	mate-desktop >= 1.7.3
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
@@ -83,6 +86,11 @@ Pliki programistyczne pakietu mate-settings-daemon.
 %setup -q
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--libexecdir=%{_libdir}/mate-settings-daemon-exec \
 	--enable-gstreamer \
@@ -102,6 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
 
 # mate < 1.5 did not exist in pld, avoid dependency on mate-conf
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-settings-daemon.convert
@@ -145,6 +154,7 @@ fi
 %{_sysconfdir}/xdg/autostart/mate-settings-daemon.desktop
 %{_iconsdir}/mate/*/actions/touchpad-*.*
 %{_iconsdir}/mate/*/apps/msd-xrandr.*
+%{_mandir}/man1/mate-settings-daemon.1*
 
 %files devel
 %defattr(644,root,root,755)

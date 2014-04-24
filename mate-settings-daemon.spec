@@ -1,8 +1,12 @@
+#
+# Conditional build:
+%bcond_with	gst		# enable gstreamer (breaks pulseaudio unmute)
+
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
 Version:	1.8.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
@@ -16,8 +20,8 @@ BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	fontconfig-devel
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.26.0
-BuildRequires:	gstreamer0.10-devel >= 0.10.1.2
-BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10.1.2
+%{?with_gst:BuildRequires:	gstreamer0.10-devel >= 0.10.1.2}
+%{?with_gst:BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10.1.2}
 BuildRequires:	gtk+2-devel >= 2:2.24.0
 BuildRequires:	intltool >= 0.37.1
 BuildRequires:	libcanberra-gtk-devel
@@ -93,8 +97,10 @@ Pliki programistyczne pakietu mate-settings-daemon.
 %{__automake}
 %configure \
 	--libexecdir=%{_libdir}/mate-settings-daemon-exec \
-	--enable-gstreamer \
+	%{__enable_disable gst gstreamer} \
 	--enable-polkit \
+	--enable-pulse \
+	--enable-smartcard-support \
 	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static \

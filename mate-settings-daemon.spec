@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_with	gst		# enable gstreamer (breaks pulseaudio unmute)
+%bcond_with	gtk3		# use GTK+ 3.x instead of 2.x
 
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
@@ -22,7 +23,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.26.0
 %{?with_gst:BuildRequires:	gstreamer0.10-devel >= 0.10.1.2}
 %{?with_gst:BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10.1.2}
-BuildRequires:	gtk+2-devel >= 2:2.24.0
+%{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
+%{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
 BuildRequires:	intltool >= 0.37.1
 BuildRequires:	libcanberra-gtk-devel
 BuildRequires:	libmatekbd-devel >= 1.7.0
@@ -48,12 +50,13 @@ Requires:	dbus-glib >= 0.74
 Requires:	dconf >= 0.13.4
 Requires:	glib2 >= 1:2.26.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+2 >= 2:2.24.0
+%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
+%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
 Requires:	gtk-update-icon-cache
 Requires:	libmatekbd >= 1.7.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.0
-Requires:	mate-desktop >= 1.7.3
+Requires:	mate-desktop >= 1.8.1
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
@@ -105,6 +108,7 @@ Pliki programistyczne pakietu mate-settings-daemon.
 	--disable-silent-rules \
 	--disable-static \
 	--with-gnu-ld \
+	%{?with_gtk3:--with-gtk=3.0} \
 	--with-nssdb \
 	--with-x
 
@@ -116,7 +120,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
 
 # mate < 1.5 did not exist in pld, avoid dependency on mate-conf
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-settings-daemon.convert

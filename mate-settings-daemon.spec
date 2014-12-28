@@ -19,7 +19,7 @@ BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	fontconfig-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.26.0
 %{?with_gst:BuildRequires:	gstreamer0.10-devel >= 0.10.1.2}
 %{?with_gst:BuildRequires:	gstreamer0.10-plugins-base-devel >= 0.10.1.2}

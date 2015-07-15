@@ -5,12 +5,12 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.10.0
+Version:	1.10.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	884029951adde0b2a4b07b6d563acdce
+# Source0-md5:	8543bb862d370647cd99079c4755eabf
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
@@ -166,6 +166,8 @@ fi
 %{_iconsdir}/mate/*/actions/touchpad-*.*
 %{_iconsdir}/mate/*/apps/msd-xrandr.*
 %{_mandir}/man1/mate-settings-daemon.1*
+%{_mandir}/man1/msd-datetime-mechanism.1*
+%{_mandir}/man1/msd-locate-pointer.1*
 
 %files devel
 %defattr(644,root,root,755)

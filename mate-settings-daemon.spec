@@ -23,7 +23,8 @@ BuildRequires:	glib2-devel >= 1:2.36.0
 %{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
 %{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
 BuildRequires:	intltool >= 0.50.1
-BuildRequires:	libcanberra-gtk-devel
+%{!?with_gtk3:BuildRequires:	libcanberra-gtk-devel}
+%{?with_gtk3:BuildRequires:	libcanberra-gtk3-devel}
 BuildRequires:	libmatekbd-devel >= 1.7.0
 BuildRequires:	libmatemixer-devel >= 1.9.0
 BuildRequires:	libnotify-devel >= 0.7.0

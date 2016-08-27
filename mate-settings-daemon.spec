@@ -119,10 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/frp
 
 # not supported by glibc yet
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/pms
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,pms}
 
 %find_lang %{name}
 

@@ -99,7 +99,6 @@ Pliki programistyczne pakietu mate-settings-daemon.
 %{__autoheader}
 %{__automake}
 %configure \
-	--libexecdir=%{_libdir}/mate-settings-daemon-exec \
 	--enable-polkit \
 	--enable-pulse \
 	--enable-smartcard-support \

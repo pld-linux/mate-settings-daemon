@@ -1,16 +1,12 @@
-#
-# Conditional build:
-%bcond_with	gtk3		# use GTK+ 3.x instead of 2.x
-
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.16.1
+Version:	1.18.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.16/%{name}-%{version}.tar.xz
-# Source0-md5:	b4314f6bf69550a01a8314fb33346b26
+Source0:	http://pub.mate-desktop.org/releases/1.18/%{name}-%{version}.tar.xz
+# Source0-md5:	36da531e7c34ddd9a98bb0d9d7efc794
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
@@ -20,18 +16,16 @@ BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	fontconfig-devel
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.36.0
-%{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
-%{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
+BuildRequires:	gtk+3-devel >= 3.14
 BuildRequires:	intltool >= 0.50.1
-%{!?with_gtk3:BuildRequires:	libcanberra-gtk-devel}
-%{?with_gtk3:BuildRequires:	libcanberra-gtk3-devel}
-BuildRequires:	libmatekbd-devel >= 1.7.0
-BuildRequires:	libmatemixer-devel >= 1.9.0
+BuildRequires:	libcanberra-gtk3-devel
+BuildRequires:	libmatekbd-devel >= 1.17.0
+BuildRequires:	libmatemixer-devel >= 1.10.0
 BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
-BuildRequires:	libxklavier-devel >= 5.0
+BuildRequires:	libxklavier-devel >= 5.2
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.9.4
+BuildRequires:	mate-desktop-devel >= 1.17.0
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -49,14 +43,13 @@ Requires:	dbus-glib >= 0.74
 Requires:	dconf >= 0.13.4
 Requires:	glib2 >= 1:2.36.0
 Requires:	gsettings-desktop-schemas
-%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
-%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
+Requires:	gtk+3 >= 3.14
 Requires:	gtk-update-icon-cache
-Requires:	libmatekbd >= 1.7.0
-Requires:	libmatemixer >= 1.9.0
+Requires:	libmatekbd >= 1.17.0
+Requires:	libmatemixer >= 1.10.0
 Requires:	libnotify >= 0.7.0
-Requires:	libxklavier >= 5.0
-Requires:	mate-desktop >= 1.9.4
+Requires:	libxklavier >= 5.2
+Requires:	mate-desktop >= 1.17.0
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
@@ -106,7 +99,6 @@ Pliki programistyczne pakietu mate-settings-daemon.
 	--disable-silent-rules \
 	--disable-static \
 	--with-gnu-ld \
-	%{?with_gtk3:--with-gtk=3.0} \
 	--with-nssdb \
 	--with-x
 
@@ -120,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
 
 # not supported by glibc yet
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,pms}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,ku_IQ,pms}
 
 %find_lang %{name}
 

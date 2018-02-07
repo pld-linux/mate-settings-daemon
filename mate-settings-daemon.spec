@@ -1,12 +1,12 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.18.2
+Version:	1.20.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.18/%{name}-%{version}.tar.xz
-# Source0-md5:	9aab19399dc9394572035ce65e746a66
+Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
+# Source0-md5:	2692c4a2251ff780c4206dc45cc82a04
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
@@ -15,8 +15,8 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	fontconfig-devel
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.36.0
-BuildRequires:	gtk+3-devel >= 3.14
+BuildRequires:	glib2-devel >= 1:2.50.0
+BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libcanberra-gtk3-devel
 BuildRequires:	libmatekbd-devel >= 1.17.0
@@ -25,7 +25,7 @@ BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 5.2
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.17.0
+BuildRequires:	mate-desktop-devel >= 1.20.0
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -41,15 +41,15 @@ BuildRequires:	xz
 Requires:	dbus >= 1.1.2
 Requires:	dbus-glib >= 0.74
 Requires:	dconf >= 0.13.4
-Requires:	glib2 >= 1:2.36.0
+Requires:	glib2 >= 1:2.50.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.14
+Requires:	gtk+3 >= 3.22
 Requires:	gtk-update-icon-cache
 Requires:	libmatekbd >= 1.17.0
 Requires:	libmatemixer >= 1.10.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.2
-Requires:	mate-desktop >= 1.17.0
+Requires:	mate-desktop >= 1.20.0
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
@@ -74,7 +74,7 @@ Group:		Development/Libraries
 # doesn't require base
 Requires:	dbus-devel >= 1.1.2
 Requires:	dbus-glib-devel >= 0.74
-Requires:	glib2-devel >= 1:2.36.0
+Requires:	glib2-devel >= 1:2.50.0
 
 %description devel
 Development files for mate-settings-daemon.
@@ -142,6 +142,7 @@ fi
 %{_datadir}/mate-settings-daemon
 %{_datadir}/dbus-1/services/org.mate.SettingsDaemon.service
 %{_datadir}/dbus-1/system-services/org.mate.SettingsDaemon.DateTimeMechanism.service
+%{_datadir}/glib-2.0/schemas/org.mate.SettingsDaemon.plugins.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.SettingsDaemon.plugins.*.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.applications-at.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.font-rendering.gschema.xml

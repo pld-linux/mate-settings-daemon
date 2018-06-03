@@ -1,12 +1,12 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.20.1
+Version:	1.20.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
-# Source0-md5:	11208f70ea08c6a9ceaf019ac361ca09
+# Source0-md5:	962c467f068a0b4a65c9d950093e11d6
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
 
 # not supported by glibc yet
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,ku_IQ,pms}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{es_ES,frp,ku_IQ,pms}
 
 %find_lang %{name}
 

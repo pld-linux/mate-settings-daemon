@@ -25,7 +25,7 @@ BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 5.2
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.20.0
+BuildRequires:	mate-desktop-devel >= 1.20.2
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -49,7 +49,7 @@ Requires:	libmatekbd >= 1.17.0
 Requires:	libmatemixer >= 1.10.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.2
-Requires:	mate-desktop >= 1.20.0
+Requires:	mate-desktop >= 1.20.2
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16

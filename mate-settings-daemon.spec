@@ -55,10 +55,9 @@ Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# NOTE: we must move %{_libexecdir}/mate-settings-daemon out of %{_libdir},
-# because it conflicts with %{_libdir}/mate-settings-daemon plugin dir
-# (not using %{_libdir}/%{name} not to mess programs with plugins)
-%define		_libexecdir %{_libdir}/mate-settings-daemon-exec
+# Use subdir to isolate package namespace
+# (and avoid exec vs dir conflicts when libexecdir==libdir)
+%define		pkglibexecdir %{_libexecdir}/mate-settings-daemon-exec
 
 %description
 MATE Desktop settings daemon. It's a fork of gnome-settings-daemon.
@@ -92,6 +91,7 @@ Pliki programistyczne pakietu mate-settings-daemon.
 %{__autoheader}
 %{__automake}
 %configure \
+	--libexecdir=%{pkglibexecdir} \
 	--enable-polkit \
 	--enable-pulse \
 	--enable-smartcard-support \
@@ -132,10 +132,10 @@ fi
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%dir %{_libexecdir}
-%attr(755,root,root) %{_libexecdir}/mate-settings-daemon
-%attr(755,root,root) %{_libexecdir}/msd-datetime-mechanism
-%attr(755,root,root) %{_libexecdir}/msd-locate-pointer
+%dir %{pkglibexecdir}
+%attr(755,root,root) %{pkglibexecdir}/mate-settings-daemon
+%attr(755,root,root) %{pkglibexecdir}/msd-datetime-mechanism
+%attr(755,root,root) %{pkglibexecdir}/msd-locate-pointer
 %dir %{_libdir}/mate-settings-daemon
 %attr(755,root,root) %{_libdir}/mate-settings-daemon/*.so
 %{_libdir}/mate-settings-daemon/*.mate-settings-plugin

@@ -1,12 +1,12 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.20.4
+Version:	1.22.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
-# Source0-md5:	ec2af5d76b047684ac784f6861f152f0
+Source0:	http://pub.mate-desktop.org/releases/1.22/%{name}-%{version}.tar.xz
+# Source0-md5:	61a2afa3a74b59968f51a5cf6ba5f72a
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
@@ -25,7 +25,7 @@ BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 5.2
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.20.2
+BuildRequires:	mate-desktop-devel >= 1.21.2
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -49,7 +49,7 @@ Requires:	libmatekbd >= 1.17.0
 Requires:	libmatemixer >= 1.10.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.2
-Requires:	mate-desktop >= 1.20.2
+Requires:	mate-desktop >= 1.21.2
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
@@ -107,7 +107,8 @@ Pliki programistyczne pakietu mate-settings-daemon.
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install -j1 \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	udevrulesdir=/lib/udev/rules.d
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
 
@@ -157,10 +158,10 @@ fi
 %dir %{_sysconfdir}/xrdb
 %{_sysconfdir}/xrdb/*.ad
 %{_iconsdir}/hicolor/*/apps/msd-xrandr.*
-%{_iconsdir}/mate/*/actions/touchpad-*.*
 %{_mandir}/man1/mate-settings-daemon.1*
 %{_mandir}/man1/msd-datetime-mechanism.1*
 %{_mandir}/man1/msd-locate-pointer.1*
+/lib/udev/rules.d/61-mate-settings-daemon-rfkill.rules
 
 %files devel
 %defattr(644,root,root,755)

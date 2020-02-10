@@ -1,12 +1,12 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.22.1
+Version:	1.24.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.22/%{name}-%{version}.tar.xz
-# Source0-md5:	9b6bbbe66fffca36046994248b9aba91
+Source0:	http://pub.mate-desktop.org/releases/1.24/%{name}-%{version}.tar.xz
+# Source0-md5:	a6d3543af918af3c3e85b93273ed0d70
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
@@ -146,13 +146,15 @@ fi
 %{_datadir}/glib-2.0/schemas/org.mate.SettingsDaemon.plugins.*.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.applications-at.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.font-rendering.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.peripherals-keyboard.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.peripherals-mouse.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.peripherals-smartcard.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.peripherals-touchpad.gschema.xml
 %dir %{_datadir}/mate-control-center
 %dir %{_datadir}/mate-control-center/keybindings
 %{_datadir}/mate-control-center/keybindings/50-accessibility.xml
 %{_datadir}/polkit-1/actions/org.mate.settingsdaemon.datetimemechanism.policy
-/etc/dbus-1/system.d/org.mate.SettingsDaemon.DateTimeMechanism.conf
+%{_datadir}/dbus-1/system.d/org.mate.SettingsDaemon.DateTimeMechanism.conf
 %{_sysconfdir}/xdg/autostart/mate-settings-daemon.desktop
 %dir %{_sysconfdir}/xrdb
 %{_sysconfdir}/xrdb/*.ad

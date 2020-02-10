@@ -14,7 +14,7 @@ BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	fontconfig-devel
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool >= 0.50.1
@@ -25,7 +25,7 @@ BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 5.2
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.21.2
+BuildRequires:	mate-desktop-devel >= 1.23.2
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -48,7 +48,7 @@ Requires:	libmatekbd >= 1.17.0
 Requires:	libmatemixer >= 1.10.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.2
-Requires:	mate-desktop >= 1.21.2
+Requires:	mate-desktop >= 1.23.2
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16

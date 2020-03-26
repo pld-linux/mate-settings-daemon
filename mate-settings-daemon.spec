@@ -10,7 +10,7 @@ Source0:	http://pub.mate-desktop.org/releases/1.24/%{name}-%{version}.tar.xz
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	dbus-devel >= 1.1.2
+BuildRequires:	dbus-devel >= 1.10.0
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	fontconfig-devel
@@ -37,7 +37,7 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xz
-Requires:	dbus >= 1.1.2
+Requires:	dbus >= 1.10.0
 Requires:	dbus-glib >= 0.74
 Requires:	dconf >= 0.13.4
 Requires:	glib2 >= 1:2.50.0
@@ -70,7 +70,7 @@ Summary:	Development files for mate-settings-daemon
 Summary(pl.UTF-8):	Pliki programistyczne pakietu mate-settings-daemon
 Group:		Development/Libraries
 # doesn't require base
-Requires:	dbus-devel >= 1.1.2
+Requires:	dbus-devel >= 1.10.0
 Requires:	dbus-glib-devel >= 0.74
 Requires:	glib2-devel >= 1:2.50.0
 

@@ -1,13 +1,14 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.24.2
+Version:	1.26.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://pub.mate-desktop.org/releases/1.24/%{name}-%{version}.tar.xz
-# Source0-md5:	9fd171edf1198d61c09de294ec27a610
+Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
+# Source0-md5:	a7948ae25c6b4924a219e68e9532a78d
 URL:		http://wiki.mate-desktop.org/mate-settings-daemon
+BuildRequires:	at-spi2-core-devel >= 2.0
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.10.0
@@ -15,7 +16,7 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	dconf-devel >= 0.13.4
 BuildRequires:	fontconfig-devel
 BuildRequires:	gettext-tools >= 0.19.8
-BuildRequires:	glib2-devel >= 1:2.50.0
+BuildRequires:	glib2-devel >= 1:2.68.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libcanberra-gtk3-devel
@@ -25,7 +26,7 @@ BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 5.2
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.23.2
+BuildRequires:	mate-desktop-devel >= 1.25.0
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -37,10 +38,11 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xz
+Requires:	at-spi2-core-libs >= 2.0
 Requires:	dbus >= 1.10.0
 Requires:	dbus-glib >= 0.74
 Requires:	dconf >= 0.13.4
-Requires:	glib2 >= 1:2.50.0
+Requires:	glib2 >= 1:2.68.0
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.22
 Requires:	gtk-update-icon-cache
@@ -48,7 +50,7 @@ Requires:	libmatekbd >= 1.17.0
 Requires:	libmatemixer >= 1.10.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.2
-Requires:	mate-desktop >= 1.23.2
+Requires:	mate-desktop >= 1.25.0
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
@@ -72,7 +74,7 @@ Group:		Development/Libraries
 # doesn't require base
 Requires:	dbus-devel >= 1.10.0
 Requires:	dbus-glib-devel >= 0.74
-Requires:	glib2-devel >= 1:2.50.0
+Requires:	glib2-devel >= 1:2.68.0
 
 %description devel
 Development files for mate-settings-daemon.

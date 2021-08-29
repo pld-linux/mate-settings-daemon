@@ -7,8 +7,8 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
 # Source0-md5:	a7948ae25c6b4924a219e68e9532a78d
-URL:		http://wiki.mate-desktop.org/mate-settings-daemon
-BuildRequires:	at-spi2-core-devel >= 2.0
+URL:		https://wiki.mate-desktop.org/mate-desktop/components/mate-settings-daemon/
+BuildRequires:	at-spi2-core-devel >= 2.36.1
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.10.0
@@ -38,7 +38,7 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xz
-Requires:	at-spi2-core-libs >= 2.0
+Requires:	at-spi2-core-libs >= 2.36.1
 Requires:	dbus >= 1.10.0
 Requires:	dbus-glib >= 0.74
 Requires:	dconf >= 0.13.4

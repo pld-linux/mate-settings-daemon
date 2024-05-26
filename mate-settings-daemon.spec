@@ -1,12 +1,12 @@
 Summary:	MATE Desktop settings daemon
 Summary(pl.UTF-8):	Demon ustawień środowiska MATE Desktop
 Name:		mate-settings-daemon
-Version:	1.26.1
+Version:	1.28.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
-# Source0-md5:	316271525629923257fcebfea3939e50
+Source0:	https://pub.mate-desktop.org/releases/1.28/%{name}-%{version}.tar.xz
+# Source0-md5:	0043a1e66872258e917f749aeb6ef36d
 URL:		https://wiki.mate-desktop.org/mate-desktop/components/mate-settings-daemon/
 BuildRequires:	at-spi2-core-devel >= 2.36.1
 BuildRequires:	autoconf >= 2.60
@@ -26,7 +26,7 @@ BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 5.2
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.25.0
+BuildRequires:	mate-desktop-devel >= 1.27.1
 BuildRequires:	nss-devel >= 3.11.2
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -50,7 +50,7 @@ Requires:	libmatekbd >= 1.17.0
 Requires:	libmatemixer >= 1.10.0
 Requires:	libnotify >= 0.7.0
 Requires:	libxklavier >= 5.2
-Requires:	mate-desktop >= 1.25.0
+Requires:	mate-desktop >= 1.27.1
 Requires:	mate-icon-theme
 Requires:	polkit >= 0.97
 Requires:	pulseaudio-libs >= 0.9.16
